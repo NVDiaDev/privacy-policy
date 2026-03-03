@@ -11,7 +11,6 @@
       padding: 20px;
       margin: 0;
     }
-
     .container {
       max-width: 800px;
       margin: 40px auto;
@@ -20,21 +19,18 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
     h1 {
       color: #007bff;
       font-size: 26px;
     }
-
     p {
       margin-bottom: 16px;
+      line-height: 1.6;
     }
-
     a {
       color: #007bff;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
@@ -43,103 +39,66 @@
 <body>
   <div class="container">
     <h1>Chính sách quyền riêng tư</h1>
+
     <p id="intro"></p>
-    <p>Chúng tôi có thể thu thập một số thông tin không định danh để cải thiện trải nghiệm người dùng, bao gồm: loại thiết bị, phiên bản hệ điều hành, ngôn ngữ, và dữ liệu sử dụng cơ bản.</p>
-    <p><strong>Chúng tôi không thu thập, lưu trữ hoặc chia sẻ bất kỳ dữ liệu cá nhân nhạy cảm</strong> nào, như tên, số điện thoại, vị trí chính xác hoặc thông tin tài khoản.</p>
-    <p>Mọi dữ liệu được xử lý cục bộ hoặc qua các dịch vụ được chứng nhận tuân thủ quy định bảo mật.</p>
-    <p>Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ: <a href="#" id="email">Email hỗ trợ</a>.</p>
+
+    <p>
+      Ứng dụng thu thập <strong>thông tin vị trí chính xác (GPS)</strong> của người dùng
+      <strong>chỉ tại thời điểm người dùng thực hiện thao tác chấm công</strong>.
+      Vị trí này được sử dụng để so sánh với vị trí làm việc đã được cấu hình sẵn trong hệ thống
+      nhằm xác nhận việc chấm công hợp lệ.
+    </p>
+
+    <p>
+      Khi chấm công, ứng dụng có thể yêu cầu <strong>chụp ảnh khuôn mặt</strong> để xác minh
+      danh tính người chấm công. Hình ảnh này chỉ được sử dụng cho mục đích chấm công nội bộ
+      và không dùng cho quảng cáo hay mục đích theo dõi khác.
+    </p>
+
+    <p>
+      Ứng dụng <strong>không theo dõi vị trí người dùng liên tục</strong>,
+      <strong>không thu thập dữ liệu khi ứng dụng chạy ngầm</strong>,
+      và <strong>không chia sẻ dữ liệu cá nhân cho bên thứ ba</strong>.
+    </p>
+
+    <p>
+      Ngoài ra, ứng dụng có thể thu thập một số thông tin không định danh
+      (loại thiết bị, phiên bản hệ điều hành)
+      nhằm cải thiện hiệu năng và độ ổn định của ứng dụng.
+    </p>
+
+    <p>
+      Dữ liệu chấm công được lưu trữ an toàn trên hệ thống và chỉ được sử dụng
+      cho mục đích quản lý chấm công theo quy định của đơn vị sử dụng.
+    </p>
+
+    <p>
+      Người dùng có thể liên hệ để yêu cầu hỗ trợ hoặc xoá dữ liệu qua email:
+      <a href="#" id="email">Email hỗ trợ</a>
+    </p>
   </div>
 
   <script>
-    // Mapping các đơn vị
     const data = {
-      phuongbac: {
-        name: "BVĐK Phương Bắc",
-        email: "bvdkphuongbac@gmail.com"
-      },
-      tuyenquang: {
-        name: "BV Đa Khoa tỉnh Tuyên Quang",
-        email: "tuyenquang@gmail.vn"
-      },
-      hoangviet: {
-        name: "BV Đa Khoa Hoàng Việt",
-        email: "hoangviet@gmail.vn"
-      },
-       pktanviet: {
-        name: "Phòng khám Tân Việt",
-        email: "tuankhmt@gmail.com"
-      },
-      thainguyen: {
-        name: "BV Trung ương Thái Nguyên",
-        email: "vanthu@bvdktuthainguyen.gov.vn"
-      },
-      hungyen: {
-        name: "BV Đa Khoa tỉnh Hưng Yên",
-        email: "benhviendakhoatinhhungyen@gmail.com"
-      },
-      phonoi: {
-        name: "BV Đa Khoa Phố Nối",
-        email: "hanhmy1218@gmail.com"
-      },
-      chodon: {
-        name: "Trung Tâm Y Tế Chợ Đồn",
-        email: "ttytchodon@thainguyen.gov.vn"
-      },
-      thainguyenkyso: {
-        name: "Ký Số Thái Nguyên",
-        email: "vanthu@bvdktuthainguyen.gov.vn"
-      },
-       kysothainguyen: {
-        name: "TWTN Sign",
-        email: "vanthu@bvdktuthainguyen.gov.vn"
-      },
-      hagiang: {
-        name: "DK HaGiang",
-        email: "info@bvdkhagiang.org.vn"
-      },
-      dkhagiang: {
-        name: "BV Đa Khoa Hà Giang",
-        email: "info@bvdkhagiang.org.vn"
-      },
-      tuyenquangkyso: {
-        name: "TuyenQuang Sign",
-        email: "tuyenquang@gmail.vn"
-      },
-      phuongbackyso: {
-        name: "PhuongBac Sign",
-        email: "bvdkphuongbac@gmail.com"
-      },
-      hungyenkyso: {
-        name: "HungYen Sign",
-        email: "benhviendakhoatinhhungyen@gmail.com"
-      },
-      tuyenquangbacsi: {
-        name: "BADT TQ",
-        email: "tuyenquang@gmail.vn"
-      },
-      thainguyenbacsi: {
-        name: "BADT TN",
-        email: "vanthu@bvdktuthainguyen.gov.vn"
-      },
-	  hmtechcom: {
+      hmtechcom: {
         name: "HM Chấm Công",
         email: "hmtechcom2025@gmail.com"
       },
       default: {
-        name: "ttsoft app",
-        email: "ttsoft@gmail.com"
+        name: "Ứng dụng Chấm Công",
+        email: "support@example.com"
       }
     };
-  const params = new URLSearchParams(window.location.search);
-  const key = params.get("app")?.toLowerCase() || "default";
 
-  const info = data[key] || data["default"];
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("app")?.toLowerCase() || "default";
+    const info = data[key] || data.default;
 
-  document.getElementById("intro").innerHTML = `Ứng dụng <strong>${info.name}</strong> cam kết bảo vệ quyền riêng tư của người dùng.`;
-  document.getElementById("email").href = `mailto:${info.email}`;
-  document.getElementById("email").textContent = info.email;
+    document.getElementById("intro").innerHTML =
+      `Ứng dụng <strong>${info.name}</strong> cam kết bảo vệ quyền riêng tư của người dùng.`;
+
+    document.getElementById("email").href = `mailto:${info.email}`;
+    document.getElementById("email").textContent = info.email;
   </script>
 </body>
 </html>
-
-<!-- https://dia2001.github.io/privacy-policy/index.html?app=pktanviet -->
