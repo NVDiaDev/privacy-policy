@@ -1,104 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chính sách quyền riêng tư</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      padding: 20px;
-      margin: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      color: #007bff;
-      font-size: 26px;
-    }
-    p {
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Chính sách quyền riêng tư</h1>
-
-    <p id="intro"></p>
-
-    <p>
-      Ứng dụng thu thập <strong>thông tin vị trí chính xác (GPS)</strong> của người dùng
-      <strong>chỉ tại thời điểm người dùng thực hiện thao tác chấm công</strong>.
-      Vị trí này được sử dụng để so sánh với vị trí làm việc đã được cấu hình sẵn trong hệ thống
-      nhằm xác nhận việc chấm công hợp lệ.
-    </p>
-
-    <p>
-      Khi chấm công, ứng dụng có thể yêu cầu <strong>chụp ảnh khuôn mặt</strong> để xác minh
-      danh tính người chấm công. Hình ảnh này chỉ được sử dụng cho mục đích chấm công nội bộ
-      và không dùng cho quảng cáo hay mục đích theo dõi khác.
-    </p>
-
-    <p>
-      Ứng dụng <strong>không theo dõi vị trí người dùng liên tục</strong>,
-      <strong>không thu thập dữ liệu khi ứng dụng chạy ngầm</strong>,
-      và <strong>không chia sẻ dữ liệu cá nhân cho bên thứ ba</strong>.
-    </p>
-
-    <p>
-      Ngoài ra, ứng dụng có thể thu thập một số thông tin không định danh
-      (loại thiết bị, phiên bản hệ điều hành)
-      nhằm cải thiện hiệu năng và độ ổn định của ứng dụng.
-    </p>
-
-    <p>
-      Dữ liệu chấm công được lưu trữ an toàn trên hệ thống và chỉ được sử dụng
-      cho mục đích quản lý chấm công theo quy định của đơn vị sử dụng.
-    </p>
-
-    <p>
-      Người dùng có thể liên hệ để yêu cầu hỗ trợ hoặc xoá dữ liệu qua email:
-      <a href="#" id="email">Email hỗ trợ</a>
-    </p>
-  </div>
-
-  <script>
-    const data = {
-      hmtechcom: {
-        name: "HM Chấm Công",
-        email: "hmtechcom2025@gmail.com"
-      },
-      default: {
-        name: "Ứng dụng Chấm Công",
-        email: "support@example.com"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chính sách quyền riêng tư — HM Tech</title>
+    <meta
+      name="description"
+      content="Chính sách quyền riêng tư các ứng dụng do HM Tech phát triển."
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script>
+      // Tương thích ngược với các link cũ dạng ?app=hmtechcom
+      var legacy = {
+        hmtechcom: "hm-cham-cong/",
+        "hm-cham-cong": "hm-cham-cong/",
+      };
+      var key = (new URLSearchParams(window.location.search).get("app") || "")
+        .toLowerCase()
+        .trim();
+      if (Object.prototype.hasOwnProperty.call(legacy, key)) {
+        window.location.replace(legacy[key]);
       }
-    };
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Chính sách quyền riêng tư</h1>
+      <p class="meta">Các ứng dụng do HM Tech phát triển</p>
 
-    const params = new URLSearchParams(window.location.search);
-    const key = params.get("app")?.toLowerCase() || "default";
-    const info = data[key] || data.default;
+      <p>Chọn ứng dụng bạn đang sử dụng để xem chính sách quyền riêng tư tương ứng:</p>
 
-    document.getElementById("intro").innerHTML =
-      `Ứng dụng <strong>${info.name}</strong> cam kết bảo vệ quyền riêng tư của người dùng.`;
+      <ul class="app-list">
+        <li>
+          <a href="hm-cham-cong/"
+            >HM Chấm Công
+            <span>Ứng dụng chấm công bằng GPS và ảnh xác minh</span></a
+          >
+        </li>
+      </ul>
 
-    document.getElementById("email").href = `mailto:${info.email}`;
-    document.getElementById("email").textContent = info.email;
-  </script>
-</body>
+      <footer>
+        <p>
+          Liên hệ:
+          <a href="mailto:hmtechcom2025@gmail.com">hmtechcom2025@gmail.com</a>
+        </p>
+      </footer>
+    </main>
+  </body>
 </html>
